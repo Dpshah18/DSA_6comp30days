@@ -1,0 +1,46 @@
+ int result=0;
+        Stack<Integer> st= new Stack<>();
+        for(int i=0;i<token.length;i++){
+            String s=token[i];
+            
+            if(!isoperator(s)){
+                st.push(Integer.valueOf(s));
+            }
+           
+            else{
+                int e=0;
+                int f=0;
+
+                if (!st.isEmpty()) {
+                    e=st.pop();
+                    f=st.pop();
+                }
+                
+
+                switch(s){
+                    case "+":
+                    st.push(f+e);
+                    break;
+                    case "-":
+                    st.push(f-e);
+                    break;
+                    case "*":
+                    st.push(f*e);
+                    break;
+                    case "/":
+                    st.push(f/e);
+                    break;
+                }
+            }
+           
+        }
+        
+        return st.pop();
+    }
+
+    private static boolean isoperator(String s) {
+        if(s.equals("+")||s.equals("-")||s.equals("/")||s.equals("*")){
+            return true;
+        }
+        return false;
+    }
