@@ -1,4 +1,36 @@
 //https://leetcode.com/problems/rotate-function/submissions/871888846/
+//first attempt:
+
+class Solution {
+    public int maxRotateFunction(int[] nums) {
+        List <Integer> l=new ArrayList<>();
+        int n = nums.length;
+        int ar=n;
+        int a[] = new int[n + 1];
+       int sum=0;
+       int i=0;
+       for (i = 0; i < n; i++) {
+           a[i] = nums[i]; 
+       }
+       while (ar-- != 0) {
+        int sum2=0;
+           int temp = a[n - 1];
+           for (i = n - 1; i > 0; i--) {
+               a[i] = a[i - 1];
+           }
+           a[0] = temp;
+        for(int j=1;j<n;j++){
+            sum2=a[j]*j+sum2;
+        }  
+        l.add(sum2);
+         
+}
+Integer max = Collections.max(l);  
+        return max;
+    }
+}
+
+//second attempt
 
 class Solution {
     public int maxRotateFunction(int[] nums) {
